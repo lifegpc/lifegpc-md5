@@ -40,9 +40,9 @@ jobs:
         run: npm run test
       
       - name: Package
-        run: tar -czvf release.tar.gz LICENSE lib/md5.js lib/md5.d.ts lib/md5.js.map package.json
+        run: tar -czvf release.tar LICENSE lib/md5.js lib/md5.d.ts lib/md5.js.map package.json
       
       - name: Publish
-        run: npm publish release.tar.gz
+        run: npm publish release.tar
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
