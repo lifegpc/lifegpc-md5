@@ -41,9 +41,11 @@ jobs:
       
       - name: Copy File
         run: |
-          mkdir -f package
+          mkdir package
           cp -v LICENSE package.json README.md tsconfig.json md5.ts package/
-          mkdir -f package/lib
+          cd package
+          mkdir lib
+          cd ..
           cp -v lib/md5.js lib/md5.d.ts lib/md5.js.map package/lib
 
 
