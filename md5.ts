@@ -1,6 +1,7 @@
 import { SerializableHash } from "@stablelib/hash";
 import { readUint32LE, writeUint32LE } from "@stablelib/binary";
 import { wipe } from "@stablelib/wipe";
+import { hmac } from "@stablelib/hmac";
 const arrayBufferToHex = require("array-buffer-to-hex");
 
 export const DIGEST_LENGTH = 16;
@@ -267,5 +268,17 @@ export function md5(s: string): string {
     let enc = new TextEncoder();
     let arr = enc.encode(s);
     let h = hash(arr);
+    return arrayBufferToHex(h.buffer);
+}
+
+export function hashWithHmac(key: Uint8Array, data: Uint8Array): Uint8Array {
+    return hmac(MD5, key, data);
+}
+
+export function HmacMD5(key: string, data: string): string {
+    let enc = new TextEncoder();
+    let k = enc.encode(key);
+    let d = enc.encode(data);
+    let h = hashWithHmac(k, d);
     return arrayBufferToHex(h.buffer);
 }
