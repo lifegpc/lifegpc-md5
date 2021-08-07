@@ -39,10 +39,18 @@ jobs:
       - name: Test
         run: npm run test
       
+      - name: Copy File
+        run: |
+          mkdir -f package
+          cp -v LICENSE package.json README.md tsconfig.json md5.ts package/
+          mkdir -f package/lib
+          cp -v lib/md5.js lib/md5.d.ts lib/md5.js.map package/lib
+
+
       - name: Package
-        run: tar -cvf release.tar LICENSE lib/md5.js lib/md5.d.ts lib/md5.js.map package.json
+        run: tar -czvf release.tar.gz package/*
       
       - name: Publish
-        run: npm publish release.tar
+        run: npm publish release.tar.gz
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
