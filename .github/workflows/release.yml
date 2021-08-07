@@ -40,7 +40,7 @@ jobs:
         run: npm run test
       
       - name: Package
-        run: tar -czvf release.tar LICENSE lib/md5.js lib/md5.d.ts lib/md5.js.map package.json
+        run: tar -cvf release.tar LICENSE lib/md5.js lib/md5.d.ts lib/md5.js.map package.json
       
       - name: Publish
         run: npm publish release.tar
