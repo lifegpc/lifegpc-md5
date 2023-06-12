@@ -1,6 +1,6 @@
 {
     "name": "lifegpc-md5",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A Node.js module for hashing messages with MD5.",
     "main": "./lib/md5.js",
     "typings": "./lib/md5.d.ts",

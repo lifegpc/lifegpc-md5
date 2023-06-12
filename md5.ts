@@ -125,6 +125,13 @@ export class MD5 implements SerializableHash {
     }
 
     /**
+     * Returns the final hash digesh as hex format.
+     */
+    digest_hex(): string {
+        return arrayBufferToHex(this.digest().buffer);
+    }
+
+    /**
      * Function useful for HMAC/PBKDF2 optimization.
      * Returns hash state to be used with restoreState().
      * Only chain value is saved, not buffers or other
